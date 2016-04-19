@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/Incidental-Cashew/holisticparallelogram.png?label=ready&title=Ready)](https://waffle.io/Incidental-Cashew/holisticparallelogram)
 # ScenicNinja
 
 ScenicNinja uses your current location to find great views nearby. It utilizes the Google Places API to find parks and restaurants within 10km of your location that have reviews matching keywords like "panoramic" and "beautiful view". Anyone can use the service, but you'll need to sign-in with a Google account to save your favorite locations. Enjoy!
