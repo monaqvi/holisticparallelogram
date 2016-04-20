@@ -29,6 +29,14 @@ module.exports = function(app, express) {
     }
   );
 
+  app.get('/auth/facebook', authFacebook.handleLogin);
+
+  app.get('/auth/facebook/callback', authFacebook.authenticateLogin,
+    function(req, res) {
+      res.redirect('/home');
+    }
+  );
+
   app.get('/auth/logout', function(req, res) {
     req.session.destroy(function() {
       res.redirect('/');
