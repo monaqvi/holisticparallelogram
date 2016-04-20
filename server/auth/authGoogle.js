@@ -13,7 +13,7 @@ module.exports.checkAuth = function (req, res, next) {
   }
 };
 
-module.exports.handleGoogleLogin = passport.authenticate('google', {
+module.exports.handleLogin = passport.authenticate('google', {
   scope: ['https://www.googleapis.com/auth/plus.login']
 });
 
