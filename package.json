@@ -33,6 +33,7 @@
     "cookie-parser": "^1.4.1",
     "eslint": "^2.7.0",
     "eslint-config-hackreactor": "github:hackreactor-labs/eslint-config-hackreactor",
+    "eslint-plugin-promise": "^1.1.0",
     "express": "^4.4.5",
     "express-session": "^1.13.0",
     "jquery": "^2.2.3",
