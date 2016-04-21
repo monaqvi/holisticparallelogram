@@ -1,5 +1,6 @@
 var path = require('path');
 var authGoogle = require(__dirname + '/../auth/authGoogle');
+var authFacebook = require(__dirname + '/../auth/authFB');
 var placeController = require(__dirname + '/../places/placeController');
 var userController = require(__dirname + '/../users/userController');
 var renderIndex = require(__dirname + '/indexHandler');
@@ -33,7 +34,8 @@ module.exports = function(app, express) {
 
   app.get('/auth/facebook/callback', authFacebook.authenticateLogin,
     function(req, res) {
-      res.redirect('/home');
+      //FIXME
+      res.redirect('/');
     }
   );
 
