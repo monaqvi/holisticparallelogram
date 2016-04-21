@@ -120,6 +120,7 @@ module.exports.searchGoogle = function(req, res) {
                 }).on('end', function() { //layer 4 on 'end'
                   body = JSON.parse(Buffer.concat(body).toString());
                   var placeDetails = body.result;
+                  console.log('DETAILS: ', placeDetails.photos);
                   var reviews = placeDetails.reviews;
                   if (reviews) {
                     for (var j = 0; j < reviews.length; j++) {
