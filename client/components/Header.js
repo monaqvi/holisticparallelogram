@@ -63,7 +63,9 @@ const mapDispatchToProps = (dispatch) => {
       var gif = '<img id="spin-gif" src="../assets/poi.gif">';
       $('#loading-container').prepend(ele);
       $('#loading-container').prepend(gif);
+      console.log('worked');
       searchGooglePlaces(function(data) {
+        console.log(data);
         // Remove loading spinner and text now that places have been returned
         $('#spinner').fadeOut();
         $('#spin-gif').fadeOut();

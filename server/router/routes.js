@@ -35,7 +35,7 @@ module.exports = function(app, express) {
   app.get('/auth/facebook/callback', authFacebook.authenticateLogin,
     function(req, res) {
       //FIXME
-      res.redirect('/');
+      res.redirect('/home');
     }
   );
 

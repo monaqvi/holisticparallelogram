@@ -39,19 +39,23 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-passport.use(new FacebookStrategy.Strategy(
-  facebookKeys,
+passport.use(new FacebookStrategy.Strategy({
+  clientID: facebookKeys.clientID,
+  clientSecret: facebookKeys.clientSecret,
+  callbackURL: '/auth/facebook/callback',
+  profileFields: ['id', 'displayName', 'link', 'email', 'first_name', 'last_name', 'picture'],
+}, 
   function(accessToken, refreshToken, profile, done) {
   // Create a user if it is a new user, otherwise just get the user from the DB
-    console.log(profile);
     User
+    //TODO combine Google and Facebook by email?
       .findOrCreate({
         where: {
           facebookUserId: profile.id
         },
         defaults: {
-          firstName: profile.givenName,
-          lastName: profile.familyName
+          firstName: profile.name.givenName,
+          lastName: profile.name.familyName
         }
       })
       // Spread is used for functions that return multiple success values

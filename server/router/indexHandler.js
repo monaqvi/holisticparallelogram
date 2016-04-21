@@ -40,15 +40,16 @@ module.exports = function(req, res) {
 
   if (req.session.passport && req.session.passport.user) {
     user = {
-      googleUserId: req.session.passport.user.id,
+      // how to handle Facebook and Google both
+      // googleUserId: req.session.passport.user.id,
       firstName: req.session.passport.user.name.givenName || null,
       lastName: req.session.passport.user.name.familyName || null
       // avatarUrl: req.session.passport.user.photos[0].value || null,
     };
 
     User.findOne({
-        where: user
-      })
+      where: user
+    })
       .then(function(foundUser) {
         return foundUser.getPlaces();
       })
@@ -60,4 +61,4 @@ module.exports = function(req, res) {
     sendInitialState();
   }
 
-}
+};

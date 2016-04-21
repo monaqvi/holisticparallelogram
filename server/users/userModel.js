@@ -24,6 +24,7 @@ var User = db.define('User',
       type: Sequelize.STRING,
       field: 'last_name'
     }
+    //TODO add additional fields like email, picture, etc.?
   }, 
   {
     freezeTableName: true // Model tableName will be the same as the model name
