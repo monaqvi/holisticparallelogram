@@ -120,21 +120,46 @@ module.exports.searchGoogle = function(req, res) {
                 }).on('end', function() { //layer 4 on 'end'
                   body = JSON.parse(Buffer.concat(body).toString());
                   var placeDetails = body.result;
-                  console.log('DETAILS: ', placeDetails.photos);
                   var reviews = placeDetails.reviews;
+                  
                   if (reviews) {
+
                     for (var j = 0; j < reviews.length; j++) {
                       var review = reviews[j];
                       if (review.text.match(regex1) || review.text.match(regex2)) { //TODO: improve regex matching
-                        filteredBody.places.push({
-                          name: placeDetails.name,
-                          address: placeDetails['formatted_address'],
-                          googlePlaceId: placeDetails['place_id']
+                        
+                        var photoReference = placeDetails.photos[0];
+
+                        request.get('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photoReference + '&key=' + GOOGLE_PLACES_API_KEY)
+                        .on('response', function(response) {
+                          response.on('data', function(body) {
+                            // Convert image to data URI
+                            var data_uri_prefix = "data:" + response.headers["content-type"] + ";base64,";
+                            var buf = new Buffer(body);
+                            var image = buf.toString('base64');
+                            image = data_uri_prefix + image;
+
+                            // TEST
+                            // console.log(image);
+
+                            // ADD TO PLACES
+                            filteredBody.places.push({
+                              name: placeDetails.name,
+                              address: placeDetails['formatted_address'],
+                              googlePlaceId: placeDetails['place_id'],
+                              image: image
+                            });
+
+                          }).on('end', function() {
+                            // image not available in this function
+                          });
                         });
                         break;
                       }
                     }
+
                   }
+
                   counter++;
                   if (counter === places.length) {
                     res.json(filteredBody);
