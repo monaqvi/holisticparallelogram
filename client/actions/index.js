@@ -8,6 +8,9 @@ module.exports = {
 
   savePlace: function(place) {
     return { type: types.SAVE_PLACE, place };
+  },
+  changeTab: function(value) {
+    return { type: types.CHANGE_TAB, value }
   }
 
 };
