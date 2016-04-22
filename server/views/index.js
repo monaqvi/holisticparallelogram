@@ -47,7 +47,7 @@ const renderFullPage = function(html, initialState) {
         <link href="https://fonts.googleapis.com/css?family=Signika:700,400,600" rel="stylesheet" type="text/css" />
       </head>
       <body>
-        <div id="app">${html}</div>
+        <div id="app"><div>${html}</div></div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
         </script>
