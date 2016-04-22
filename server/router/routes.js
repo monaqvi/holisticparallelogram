@@ -1,5 +1,6 @@
 var path = require('path');
-var auth = require(__dirname + '/../auth/auth');
+var authGoogle = require(__dirname + '/../auth/authGoogle');
+var authFacebook = require(__dirname + '/../auth/authFB');
 var placeController = require(__dirname + '/../places/placeController');
 var userController = require(__dirname + '/../users/userController');
 var renderIndex = require(__dirname + '/indexHandler');
@@ -11,9 +12,9 @@ module.exports = function(app, express) {
 
   app.get('/api/places', placeController.searchGoogle);
 
-  app.post('/api/places/saved', auth.checkAuth, placeController.saveOne);
-  app.get('/api/places/saved', auth.checkAuth, placeController.getAllSaved);
-  app.delete('/api/places/saved', auth.checkAuth, placeController.deleteOne);
+  app.post('/api/places/saved', authGoogle.checkAuth, placeController.saveOne);
+  app.get('/api/places/saved', authGoogle.checkAuth, placeController.getAllSaved);
+  app.delete('/api/places/saved', authGoogle.checkAuth, placeController.deleteOne);
 
   app.post('/api/users', userController.saveOne);
 
@@ -21,10 +22,19 @@ module.exports = function(app, express) {
     res.sendFile(path.resolve(__dirname + '/../../client/login.html'));
   });
 
-  app.get('/auth/google', auth.handleGoogleLogin);
+  app.get('/auth/google', authGoogle.handleLogin);
 
-  app.get('/auth/google/callback', auth.authenticateGoogleLogin,
+  app.get('/auth/google/callback', authGoogle.authenticateLogin,
     function(req, res) {
+      res.redirect('/home');
+    }
+  );
+
+  app.get('/auth/facebook', authFacebook.handleLogin);
+
+  app.get('/auth/facebook/callback', authFacebook.authenticateLogin,
+    function(req, res) {
+      //FIXME
       res.redirect('/home');
     }
   );

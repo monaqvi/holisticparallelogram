@@ -13,11 +13,11 @@ module.exports.checkAuth = function (req, res, next) {
   }
 };
 
-module.exports.handleGoogleLogin = passport.authenticate('google', {
+module.exports.handleLogin = passport.authenticate('google', {
   scope: ['https://www.googleapis.com/auth/plus.login']
 });
 
-module.exports.authenticateGoogleLogin = passport.authenticate('google', {
+module.exports.authenticateLogin = passport.authenticate('google', {
   failureRedirect: '/'
 });
 
