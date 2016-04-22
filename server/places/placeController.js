@@ -130,7 +130,6 @@ module.exports.searchGoogle = function(req, res) {
                         
                         var photoReference = placeDetails.photos[0].photo_reference;
                         var image = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photoReference + '&key=' + GOOGLE_PLACES_API_KEY;
-                        // console.log(photoReference);
 
                         filteredBody.places.push({
                           name: placeDetails.name,
@@ -139,41 +138,9 @@ module.exports.searchGoogle = function(req, res) {
                           image: image
                         });
 
-                        // console.log('REQUEST: https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photoReference + '&key=' + GOOGLE_PLACES_API_KEY);
-
-                        // request.get('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photoReference + '&key=' + GOOGLE_PLACES_API_KEY)
-
-                        // .on('response', function(response) {
-                        //   // var _body = '';
-                        //   var _body = [];
-                        //   // req.setEncoding('utf8');
-                          
-                        //   response.on('data', function(chunk) {
-                        //     // _body += chunk;
-                        //     _body.push(chunk);
-                        //   }).on('end', function() {
-
-                        //     // body = JSON.parse(Buffer.concat(body).toString());
-                            
-                        //     var data_uri_prefix = "data:" + response.headers["content-type"] + ";base64,";
-                        //     var buf = new Buffer(_body);
-                        //     var image = buf.toString('base64');
-                        //     image = data_uri_prefix + image;
-
-                        //     // console.log('BODY: ', _body);
-                        //     // ADD TO PLACES
-                        //     filteredBody.places.push({
-                        //       name: placeDetails.name,
-                        //       address: placeDetails['formatted_address'],
-                        //       googlePlaceId: placeDetails['place_id'],
-                        //       image: image
-                        //     });
-                        //   });
-                        // });
                         break;
                       }
                     }
-
                   }
 
                   counter++;
