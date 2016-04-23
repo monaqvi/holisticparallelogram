@@ -19,21 +19,23 @@ class SavedPlaceEntry extends Component {
   }
 
   render() {
-    <div className='saved-place-entry animated fadeIn'>
-      <a href={'https://www.google.com/maps/place/' + this.props.savedPlace.name + ' ' + this.props.savedPlace.address} target="_blank">
-        <p className='saved-place-name'>{ this.props.savedPlace.name }</p>
-        <p className='saved-place-address'>{ this.props.savedPlace.address }</p>
-      </a>
-      <div>
-        <a className='saved-place-entry-link' href={'//www.images.google.com/search?q=' + this.props.savedPlace.name + ' ' + this.props.savedPlace.address + '&tbm=isch'}
-        target='_blank'>View Images</a>
-        <span className='place-entry-link-divider'>&middot;</span>
-        <a className='saved-place-entry-link' href={'//www.google.com/search?q=' + this.props.savedPlace.name + ' ' + this.props.savedPlace.address}
-        target='_blank'>Find on Google</a>
-        <span className='place-entry-link-divider'>&middot;</span>
-        <span onClick={this.handleClick.bind(this)} className='icon-ban' aria-hidden='true'></span>
+    return (
+      <div className='saved-place-entry animated fadeIn'>
+        <a href={'https://www.google.com/maps/place/' + this.props.savedPlace.name + ' ' + this.props.savedPlace.address} target="_blank">
+          <p className='saved-place-name'>{ this.props.savedPlace.name }</p>
+          <p className='saved-place-address'>{ this.props.savedPlace.address }</p>
+        </a>
+        <div>
+          <a className='saved-place-entry-link' href={'//www.images.google.com/search?q=' + this.props.savedPlace.name + ' ' + this.props.savedPlace.address + '&tbm=isch'}
+          target='_blank'>View Images</a>
+          <span className='place-entry-link-divider'>&middot;</span>
+          <a className='saved-place-entry-link' href={'//www.google.com/search?q=' + this.props.savedPlace.name + ' ' + this.props.savedPlace.address}
+          target='_blank'>Find on Google</a>
+          <span className='place-entry-link-divider'>&middot;</span>
+          <span onClick={this.handleClick.bind(this)} className='icon-ban' aria-hidden='true'></span>
+        </div>
       </div>
-    </div>
+    )
   }
 };
 
