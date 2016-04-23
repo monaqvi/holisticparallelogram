@@ -50,6 +50,11 @@ a {
   text-decoration: none;
 }
 
+a {color: inherit;}      /* unvisited link */
+a:visited {color:inherit;}  /* visited link */
+a:hover {color: inherit;}  /* mouse over link */
+a:active {color: inherit;}
+
 a.place-entry-link, a.saved-place-entry-link {
   padding: 8px 0px;
   color: #FF5A3B;
