@@ -47,7 +47,6 @@ module.exports.deleteOne = function(req, res) {
     where: user
   })
   .then(function(foundUser) {
-    // console.log(JSON.stringify(foundUser) + ' < --------- FOUNDUSER');
     userFound = foundUser;
   });
 
