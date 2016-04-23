@@ -11,6 +11,10 @@ import touchTap from 'react-tap-event-plugin';
 import $ from 'jquery';
 import Navbar from './Navbar';
 
+const tabStyle = {
+  paddingTop:5,
+  marginTop: -30
+}
 
 class App extends Component {
   constructor(props) {
@@ -30,10 +34,10 @@ class App extends Component {
     return (
       <div>
         <Header/>
-
         <Navbar/>
         <Tabs
           value={this.state.value}
+          style={tabStyle}
         >
             <Tab label='View Search' value='a' onClick={this.handleChange.bind(this, 'a')} ref='TEST'>
             <div className='grid'>
@@ -41,9 +45,7 @@ class App extends Component {
             </div>
             </Tab>
             <Tab label='Your Places' value='b' onClick={this.handleChange.bind(this, 'b')} ref='TEST'>
-            
             <SavedPlaceContainer/>
-
             </Tab>
         </Tabs>
       </div>

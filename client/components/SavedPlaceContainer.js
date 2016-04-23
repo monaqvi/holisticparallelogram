@@ -88,14 +88,6 @@ class SavedPlaceContainer extends Component {
             <TestMarker lat={savedPlace.lat} lng={savedPlace.lng} text={'A'}></TestMarker>
 
           ))}
-          <TestMarker lat={37.794440} lng={-122.463226}></TestMarker>
-          <TestMarker lat={37.785758} lng={-122.429581}></TestMarker>
-          <TestMarker lat={37.771105} lng={-122.435074}></TestMarker>
-          <TestMarker lat={37.724955} lng={-122.423401}></TestMarker>
-          <TestMarker lat={37.724412} lng={-122.457733}></TestMarker>
-          <TestMarker lat={37.761334} lng={-122.457733}></TestMarker>
-          <TestMarker lat={37.767848} lng={-122.419968}></TestMarker>
-          <TestMarker lat={37.707574} lng={-122.492752}></TestMarker>
 
         </GoogleMap>
         </div>
