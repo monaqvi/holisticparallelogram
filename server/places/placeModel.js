@@ -17,8 +17,6 @@ var Place = db.define('Place',
     },
     address: {
       type: Sequelize.STRING
-<<<<<<< 3c0e9e4696794d90c1fc1eb293acf746db835f8b
-=======
     },
     image: {
       type: Sequelize.STRING,
@@ -30,7 +28,6 @@ var Place = db.define('Place',
     lng: {
       type: Sequelize.INTEGER,
       field: 'lng'
->>>>>>> add lat and lng to DB
     }
   },
   {
