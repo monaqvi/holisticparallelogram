@@ -82,6 +82,7 @@ module.exports.searchGoogle = function(req, res) {
 
   request.get('https://maps.googleapis.com/maps/api/place/radarsearch/json' + searchString + '&key=' + GOOGLE_PLACES_API_KEY)
     .on('response', function(response) { //layer 1 on 'response'
+      console.log('https://maps.googleapis.com/maps/api/place/radarsearch/json' + searchString + '&key=' + GOOGLE_PLACES_API_KEY);
 
       var body = [];
 
