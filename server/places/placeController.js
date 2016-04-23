@@ -68,6 +68,34 @@ module.exports.deleteOne = function(req, res) {
       // This will only matter if this app goes global!
   });
 
+<<<<<<< 3c0e9e4696794d90c1fc1eb293acf746db835f8b
+=======
+  // User.findOne({
+  //   where: user
+  // })
+  // .then(function(foundUser) {
+  //   Place.findOne({where: place})
+  //   .then(function(foundPlace) {
+  //     // foundUser.removePlace(foundPlace)
+  //     // .then(function() {
+  //       res.json(foundPlace);
+  //     // });
+  //   });
+  // });
+
+  // Place.findOne({
+  //   where: {googlePlaceId: place.googlePlaceId}
+  // })
+  // .then(function(place) {
+  //   // remove the association between the user and the place
+  //   user.removePlace(place);
+  //     // TODO: For future, do a check:
+  //     // if no users have a place with the same id as this one,
+  //     // delete that place from the places table so that you don't end
+  //     // up with lots of places that aren't associated with any users.
+  //     // This will only matter if this app goes global!
+  // });
+>>>>>>> add lat and lng to DB
 };
 
 
@@ -113,6 +141,7 @@ module.exports.searchGoogle = function(req, res) {
                   }
 
                   if (reviews) {
+<<<<<<< 3c0e9e4696794d90c1fc1eb293acf746db835f8b
                     if (placeDetails.photos) {
                       for (var j = 0; j < reviews.length; j++) {
                         var review = reviews[j];
@@ -130,6 +159,19 @@ module.exports.searchGoogle = function(req, res) {
 
                           break;
                         }
+=======
+                    for (var j = 0; j < reviews.length; j++) {
+                      var review = reviews[j];
+                      if (review.text.match(regex1) || review.text.match(regex2)) { //TODO: improve regex matching
+                        filteredBody.places.push({
+                          name: placeDetails.name,
+                          address: placeDetails['formatted_address'],
+                          googlePlaceId: placeDetails['place_id'],
+                          lat:placeDetails.geometry.location.lat,
+                          lng:placeDetails.geometry.location.lng
+                        });
+                        break;
+>>>>>>> add lat and lng to DB
                       }
                     }
                   }
@@ -145,10 +187,10 @@ module.exports.searchGoogle = function(req, res) {
                 counter++;
                 if (counter === places.length) {
                   res.json(filteredBody);
-                } 
+                }
               }) //end of layer 3 on 'error'
           }
-          
+
         } else {
           res.json(filteredBody);
         }
@@ -158,5 +200,3 @@ module.exports.searchGoogle = function(req, res) {
       //TODO: handle error
     }); //end of layer 1 on 'error'
 };
-
-
