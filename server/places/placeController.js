@@ -120,25 +120,28 @@ module.exports.searchGoogle = function(req, res) {
                 }).on('end', function() { //layer 4 on 'end'
                   body = JSON.parse(Buffer.concat(body).toString());
                   var placeDetails = body.result;
-                  var reviews = placeDetails.reviews;
-                  
+                  if (placeDetails) {
+                    var reviews = placeDetails.reviews; 
+                  }
+
                   if (reviews) {
+                    if (placeDetails.photos) {
+                      for (var j = 0; j < reviews.length; j++) {
+                        var review = reviews[j];
+                        if (review.text.match(regex1) || review.text.match(regex2)) { //TODO: improve regex matching
+                          
+                          var photoReference = placeDetails.photos[0].photo_reference;
+                          var image = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photoReference + '&key=' + GOOGLE_PLACES_API_KEY;
 
-                    for (var j = 0; j < reviews.length; j++) {
-                      var review = reviews[j];
-                      if (review.text.match(regex1) || review.text.match(regex2)) { //TODO: improve regex matching
-                        
-                        var photoReference = placeDetails.photos[0].photo_reference;
-                        var image = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photoReference + '&key=' + GOOGLE_PLACES_API_KEY;
+                          filteredBody.places.push({
+                            name: placeDetails.name,
+                            address: placeDetails['formatted_address'],
+                            googlePlaceId: placeDetails['place_id'],
+                            image: image
+                          });
 
-                        filteredBody.places.push({
-                          name: placeDetails.name,
-                          address: placeDetails['formatted_address'],
-                          googlePlaceId: placeDetails['place_id'],
-                          image: image
-                        });
-
-                        break;
+                          break;
+                        }
                       }
                     }
                   }
