@@ -60,7 +60,7 @@ class SavedPlaceContainer extends Component {
 
           { this.props.savedPlaces.map((savedPlace) => (
             <div>
-              <SavedPlaceEntry savedPlace={savedPlace} />
+              <SavedPlaceEntry savedPlace={savedPlace} onDeleteClick={this.props.onDeleteClick} />
             </div>
           ))}
 
