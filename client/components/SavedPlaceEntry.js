@@ -27,7 +27,7 @@ class SavedPlaceEntry extends Component {
     <div>
       <div className='saved-place-entry animated fadeIn'>
       <Paper className='savedImage' style={styleB} zDepth={5}/>
-      <img  />
+      <img />
         <a href={'https://www.google.com/maps/place/' + this.props.savedPlace.name + ' ' + this.props.savedPlace.address} target="_blank">
           <p className='saved-place-name'>{ this.props.savedPlace.name }</p>
           <p className='saved-place-address'>{ this.props.savedPlace.address }</p>
@@ -43,7 +43,7 @@ class SavedPlaceEntry extends Component {
         </div>
       </div>
     </div>
-    )
+    );
   }
 };
 
