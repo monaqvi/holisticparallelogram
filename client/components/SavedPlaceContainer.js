@@ -1,6 +1,10 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import SavedPlaceEntry from './SavedPlaceEntry.js';
+import ReactDOM from 'react-dom';
+import actions from '../actions/index.js';
+import $ from 'jquery';
+
 import GridList from 'material-ui/lib/grid-list/grid-list';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import StarBorder from 'material-ui/lib/svg-icons/toggle/star-border';
@@ -80,6 +84,28 @@ SavedPlaceContainer.propTypes = {
   savedPlaces: PropTypes.array,
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onDeleteClick: (place, user) => {
+      $.ajax({
+        url: '/api/places/saved',
+        method: 'DELETE',
+        data: {user: user, place: place},
+      });
+      // console.log(JSON.stringify(place) + ' < ---------- PLACE');
+      // console.log(JSON.stringify(user) + ' < ------------ USER');
+      dispatch(actions.deletePlace(place));
+    }
+  };
+};
+
+
+SavedPlaceContainer.propTypes = {
+  places: PropTypes.array.isRequired,
+  onDeleteClick: PropTypes.func.isRequired
+};
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(SavedPlaceContainer);
