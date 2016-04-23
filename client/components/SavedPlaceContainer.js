@@ -10,26 +10,35 @@ import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import StarBorder from 'material-ui/lib/svg-icons/toggle/star-border';
 import IconButton from 'material-ui/lib/icon-button';
 import GoogleMap from 'google-map-react';
+import TestMarker from './TestMarker.js'
 
+
+
+const mapstyles = {width:580, height: 600, float:'left', marginLeft:100};
 const styles = {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+    float:'left',
+    marginTop: 20
   },
   gridList: {
-    width:650,
-    height: 400,
+    width:700,
+    height: 600,
     marginBottom: 24,
-    marginRight:650
+    overflowY: 'auto'
+
   },
 };
- const defaultProps = {lat: 37.7749, lng: 122.4194}
+ var center;
+
 
 class SavedPlaceContainer extends Component {
   constructor(props) {
     super(props);
   }
+
 
   render() {
     if (this.props.savedPlaces.length === 0) {
@@ -52,9 +61,9 @@ class SavedPlaceContainer extends Component {
         <div>
           <div style={styles.root}>
           <GridList
-           cellHeight={100}
+           cellHeight={120}
            style={styles.gridList}
-           padding={10}
+           padding={25}
 
           >
 
@@ -66,8 +75,24 @@ class SavedPlaceContainer extends Component {
 
         </GridList>
         </div>
+        <div style={mapstyles}>
+        <GoogleMap
+          bootstrapURLKeys={{
+              key: 'AIzaSyAeYPE2KvoYwdSiVVrZEwdyQ94engLcfxY',
+              language: 'en'
+          }}
+          center={[37.783697, -122.408966]}
+          zoom={12}
+          >
+          {this.props.savedPlaces.map((savedPlace ) =>(
+            <TestMarker lat={savedPlace.lat} lng={savedPlace.lng} text={'A'}></TestMarker>
 
+          ))}
+
+        </GoogleMap>
+        </div>
       </div>
+
 
       );
     }

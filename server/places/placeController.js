@@ -50,8 +50,8 @@ module.exports.deleteOne = function(req, res) {
     userFound = foundUser;
   });
 
-  Place.findOne({ 
-    where: {googlePlaceId: place.googlePlaceId} 
+  Place.findOne({
+    where: {googlePlaceId: place.googlePlaceId}
   })
   .then(function(place) {
     // remove the association between the user and the place
@@ -61,13 +61,38 @@ module.exports.deleteOne = function(req, res) {
       res.json(place);
     });
     // user.removePlace(place);
-      // TODO: For future, do a check: 
+      // TODO: For future, do a check:
       // if no users have a place with the same id as this one,
       // delete that place from the places table so that you don't end
       // up with lots of places that aren't associated with any users.
       // This will only matter if this app goes global!
   });
 
+  // User.findOne({
+  //   where: user
+  // })
+  // .then(function(foundUser) {
+  //   Place.findOne({where: place})
+  //   .then(function(foundPlace) {
+  //     // foundUser.removePlace(foundPlace)
+  //     // .then(function() {
+  //       res.json(foundPlace);
+  //     // });
+  //   });
+  // });
+
+  // Place.findOne({
+  //   where: {googlePlaceId: place.googlePlaceId}
+  // })
+  // .then(function(place) {
+  //   // remove the association between the user and the place
+  //   user.removePlace(place);
+  //     // TODO: For future, do a check:
+  //     // if no users have a place with the same id as this one,
+  //     // delete that place from the places table so that you don't end
+  //     // up with lots of places that aren't associated with any users.
+  //     // This will only matter if this app goes global!
+  // });
 };
 
 
@@ -109,7 +134,7 @@ module.exports.searchGoogle = function(req, res) {
                   body = JSON.parse(Buffer.concat(body).toString());
                   var placeDetails = body.result;
                   if (placeDetails) {
-                    var reviews = placeDetails.reviews; 
+                    var reviews = placeDetails.reviews;
                   }
 
                   if (reviews) {
@@ -117,7 +142,7 @@ module.exports.searchGoogle = function(req, res) {
                       for (var j = 0; j < reviews.length; j++) {
                         var review = reviews[j];
                         if (review.text.match(regex1) || review.text.match(regex2)) { //TODO: improve regex matching
-                          
+
                           var photoReference = placeDetails.photos[0].photo_reference;
                           var image = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photoReference + '&key=' + GOOGLE_PLACES_API_KEY;
 
@@ -125,11 +150,14 @@ module.exports.searchGoogle = function(req, res) {
                             name: placeDetails.name,
                             address: placeDetails['formatted_address'],
                             googlePlaceId: placeDetails['place_id'],
-                            image: image
+                            image: image,
+                            lat:placeDetails.geometry.location.lat,
+                            lng:placeDetails.geometry.location.lng
                           });
 
                           break;
                         }
+
                       }
                     }
                   }
@@ -145,10 +173,10 @@ module.exports.searchGoogle = function(req, res) {
                 counter++;
                 if (counter === places.length) {
                   res.json(filteredBody);
-                } 
+                }
               }) //end of layer 3 on 'error'
           }
-          
+
         } else {
           res.json(filteredBody);
         }
@@ -158,5 +186,3 @@ module.exports.searchGoogle = function(req, res) {
       //TODO: handle error
     }); //end of layer 1 on 'error'
 };
-
-
