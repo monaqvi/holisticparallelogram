@@ -9,6 +9,8 @@ import SavedPlaceContainer from './SavedPlaceContainer';
 import searchGooglePlaces from '../utils/searchGooglePlaces.js';
 import touchTap from 'react-tap-event-plugin';
 import $ from 'jquery';
+import Navbar from './Navbar';
+
 
 class App extends Component {
   constructor(props) {
@@ -30,6 +32,8 @@ console.log('fire');
     return (
       <div>
         <Header/>
+
+        <Navbar/>
         <Tabs
           value={this.state.value}
         >
