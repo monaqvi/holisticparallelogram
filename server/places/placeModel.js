@@ -17,9 +17,6 @@ var Place = db.define('Place',
     },
     address: {
       type: Sequelize.STRING
-    },
-    image: {
-      type: Sequelize.STRING
     }
   },
   {
