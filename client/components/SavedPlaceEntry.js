@@ -15,7 +15,6 @@ class SavedPlaceEntry extends Component {
   handleClick(e) {
     e.preventDefault;
     this.props.onDeleteClick(this.props.savedPlace, this.props.user);
-    // $('span .icon-ban').fadeOut();
   }
 
   render() {

@@ -92,8 +92,6 @@ const mapDispatchToProps = (dispatch) => {
         method: 'DELETE',
         data: {user: user, place: place},
       });
-      // console.log(JSON.stringify(place) + ' < ---------- PLACE');
-      // console.log(JSON.stringify(user) + ' < ------------ USER');
       dispatch(actions.deletePlace(place));
     }
   };
