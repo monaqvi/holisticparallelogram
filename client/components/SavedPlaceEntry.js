@@ -21,7 +21,7 @@ class SavedPlaceEntry extends Component {
 
   render() {
     const styleB = {
-      backgroundImage: 'url(' + this.props.savedPlace.image + ')'
+      backgroundImage: 'url(' + this.props.savedPlace.image + ')',
     };
     return (
     <div>

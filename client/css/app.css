@@ -249,4 +249,5 @@ button:focus {
   min-height:40;
   max-width:100%;
   max-height:100%;
+  background-size: 70px 70px;
 }
