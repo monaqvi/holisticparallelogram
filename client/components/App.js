@@ -21,8 +21,6 @@ class App extends Component {
   }
 
   handleChange(e, index, value){
-    console.log(arguments);
-console.log('fire');
     this.setState({
       value: e
     });
@@ -43,7 +41,9 @@ console.log('fire');
             </div>
             </Tab>
             <Tab label='Your Places' value='b' onClick={this.handleChange.bind(this, 'b')} ref='TEST'>
+            
             <SavedPlaceContainer/>
+
             </Tab>
         </Tabs>
       </div>
