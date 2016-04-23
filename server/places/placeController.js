@@ -150,22 +150,14 @@ module.exports.searchGoogle = function(req, res) {
                             name: placeDetails.name,
                             address: placeDetails['formatted_address'],
                             googlePlaceId: placeDetails['place_id'],
-                            image: image
+                            image: image,
+                            lat:placeDetails.geometry.location.lat,
+                            lng:placeDetails.geometry.location.lng
                           });
 
                           break;
                         }
-                    for (var j = 0; j < reviews.length; j++) {
-                      var review = reviews[j];
-                      if (review.text.match(regex1) || review.text.match(regex2)) { //TODO: improve regex matching
-                        filteredBody.places.push({
-                          name: placeDetails.name,
-                          address: placeDetails['formatted_address'],
-                          googlePlaceId: placeDetails['place_id'],
-                          lat:placeDetails.geometry.location.lat,
-                          lng:placeDetails.geometry.location.lng
-                        });
-                        break;
+
                       }
                     }
                   }
