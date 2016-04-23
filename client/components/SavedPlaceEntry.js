@@ -4,6 +4,8 @@ import GridList from 'material-ui/lib/grid-list/grid-list';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import StarBorder from 'material-ui/lib/svg-icons/toggle/star-border';
 import IconButton from 'material-ui/lib/icon-button';
+import Paper from 'material-ui/lib/paper';
+
 
 
 class SavedPlaceEntry extends Component {
@@ -18,8 +20,14 @@ class SavedPlaceEntry extends Component {
   }
 
   render() {
+    const styleB = {
+      backgroundImage: 'url(' + this.props.savedPlace.image + ')'
+    };
     return (
+    <div>
       <div className='saved-place-entry animated fadeIn'>
+      <Paper className='savedImage' style={styleB} zDepth={5}/>
+      <img  />
         <a href={'https://www.google.com/maps/place/' + this.props.savedPlace.name + ' ' + this.props.savedPlace.address} target="_blank">
           <p className='saved-place-name'>{ this.props.savedPlace.name }</p>
           <p className='saved-place-address'>{ this.props.savedPlace.address }</p>
@@ -34,6 +42,7 @@ class SavedPlaceEntry extends Component {
           <span onClick={this.handleClick.bind(this)} className='icon-ban' aria-hidden='true'></span>
         </div>
       </div>
+    </div>
     )
   }
 };
