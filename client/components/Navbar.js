@@ -40,7 +40,7 @@ class Navbar extends Component {
     return (
 
       // <div className="navbar" style={{width: '100%', height: '50px', 'backgroundColor': '#E55136', position: 'fixed', top: 0, zIndex: 1, display: ''}}>
-      <div className="navbar">
+      <div className="navbar" style={{display: 'none'}}>
         <a href='#'>
           <img className='navNinja' src='./../assets/ninja.svg' />
         </a>
