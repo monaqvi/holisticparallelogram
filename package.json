@@ -6,7 +6,10 @@
     "Andrew Ho",
     "Joel Aguero",
     "Laura Curley",
-    "Reina Mei"
+    "Reina Mei",
+    "Muhammad Naqvi",
+    "Chris Lardizabal",
+    "Dylan Kuang"
   ],
   "main": "server.js",
   "scripts": {
