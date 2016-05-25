@@ -19,7 +19,15 @@ var Place = db.define('Place',
       type: Sequelize.STRING
     },
     image: {
-      type: Sequelize.STRING
+      type: Sequelize.TEXT,
+    },
+    lat: {
+      type: Sequelize.DOUBLE,
+      field: 'lat'
+    },
+    lng: {
+      type: Sequelize.DOUBLE,
+      field: 'lng'
     }
   },
   {

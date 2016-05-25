@@ -42,18 +42,30 @@ module.exports.deleteOne = function(req, res) {
   var user = req.body.user;
   var place = req.body.place;
 
+  var userFound;
   User.findOne({
     where: user
   })
   .then(function(foundUser) {
-    // Place.findOne({
-    //   where: place
-    // })
-    // .then(function(foundPlace) {
-    //   res.json(foundPlace);
-    // });
-    res.json(user);
+    userFound = foundUser;
+  });
 
+  Place.findOne({
+    where: {googlePlaceId: place.googlePlaceId}
+  })
+  .then(function(place) {
+    // remove the association between the user and the place
+    userFound.removePlace(place).then(function() {
+      console.log('REMOVED');
+      console.log(JSON.stringify(place) + '  <-------------- PLACEFOUND');
+      res.json(place);
+    });
+    // user.removePlace(place);
+      // TODO: For future, do a check:
+      // if no users have a place with the same id as this one,
+      // delete that place from the places table so that you don't end
+      // up with lots of places that aren't associated with any users.
+      // This will only matter if this app goes global!
   });
 
   // User.findOne({
@@ -69,13 +81,13 @@ module.exports.deleteOne = function(req, res) {
   //   });
   // });
 
-  // Place.findOne({ 
-  //   where: {googlePlaceId: place.googlePlaceId} 
+  // Place.findOne({
+  //   where: {googlePlaceId: place.googlePlaceId}
   // })
   // .then(function(place) {
   //   // remove the association between the user and the place
   //   user.removePlace(place);
-  //     // TODO: For future, do a check: 
+  //     // TODO: For future, do a check:
   //     // if no users have a place with the same id as this one,
   //     // delete that place from the places table so that you don't end
   //     // up with lots of places that aren't associated with any users.
@@ -95,6 +107,7 @@ module.exports.searchGoogle = function(req, res) {
 
   request.get('https://maps.googleapis.com/maps/api/place/radarsearch/json' + searchString + '&key=' + GOOGLE_PLACES_API_KEY)
     .on('response', function(response) { //layer 1 on 'response'
+      console.log('https://maps.googleapis.com/maps/api/place/radarsearch/json' + searchString + '&key=' + GOOGLE_PLACES_API_KEY);
 
       var body = [];
 
@@ -120,20 +133,35 @@ module.exports.searchGoogle = function(req, res) {
                 }).on('end', function() { //layer 4 on 'end'
                   body = JSON.parse(Buffer.concat(body).toString());
                   var placeDetails = body.result;
-                  var reviews = placeDetails.reviews;
+                  if (placeDetails) {
+                    var reviews = placeDetails.reviews;
+                  }
+
                   if (reviews) {
-                    for (var j = 0; j < reviews.length; j++) {
-                      var review = reviews[j];
-                      if (review.text.match(regex1) || review.text.match(regex2)) { //TODO: improve regex matching
-                        filteredBody.places.push({
-                          name: placeDetails.name,
-                          address: placeDetails['formatted_address'],
-                          googlePlaceId: placeDetails['place_id']
-                        });
-                        break;
+                    if (placeDetails.photos) {
+                      for (var j = 0; j < reviews.length; j++) {
+                        var review = reviews[j];
+                        if (review.text.match(regex1) || review.text.match(regex2)) { //TODO: improve regex matching
+
+                          var photoReference = placeDetails.photos[0].photo_reference;
+                          var image = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photoReference + '&key=' + GOOGLE_PLACES_API_KEY;
+
+                          filteredBody.places.push({
+                            name: placeDetails.name,
+                            address: placeDetails['formatted_address'],
+                            googlePlaceId: placeDetails['place_id'],
+                            image: image,
+                            lat:placeDetails.geometry.location.lat,
+                            lng:placeDetails.geometry.location.lng
+                          });
+
+                          break;
+                        }
+
                       }
                     }
                   }
+
                   counter++;
                   if (counter === places.length) {
                     res.json(filteredBody);
@@ -145,10 +173,10 @@ module.exports.searchGoogle = function(req, res) {
                 counter++;
                 if (counter === places.length) {
                   res.json(filteredBody);
-                } 
+                }
               }) //end of layer 3 on 'error'
           }
-          
+
         } else {
           res.json(filteredBody);
         }
@@ -158,5 +186,3 @@ module.exports.searchGoogle = function(req, res) {
       //TODO: handle error
     }); //end of layer 1 on 'error'
 };
-
-

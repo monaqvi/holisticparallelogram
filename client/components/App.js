@@ -9,6 +9,12 @@ import SavedPlaceContainer from './SavedPlaceContainer';
 import searchGooglePlaces from '../utils/searchGooglePlaces.js';
 import touchTap from 'react-tap-event-plugin';
 import $ from 'jquery';
+import Navbar from './Navbar';
+
+const tabStyle = {
+  paddingTop:5,
+  marginTop: -30
+}
 
 class App extends Component {
   constructor(props) {
@@ -19,8 +25,6 @@ class App extends Component {
   }
 
   handleChange(e, index, value){
-    console.log(arguments);
-console.log('fire');
     this.setState({
       value: e
     });
@@ -30,8 +34,10 @@ console.log('fire');
     return (
       <div>
         <Header/>
+        <Navbar/>
         <Tabs
           value={this.state.value}
+          style={tabStyle}
         >
             <Tab label='View Search' value='a' onClick={this.handleChange.bind(this, 'a')} ref='TEST'>
             <div className='grid'>
