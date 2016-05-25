@@ -4,14 +4,13 @@
 ScenicNinja uses your current location to find great views nearby. It utilizes the Google Places API to find parks and restaurants within 10km of your location that have reviews matching keywords like "panoramic" and "beautiful view". Anyone can use the service, but you'll need to sign-in with a Google account to save your favorite locations. Enjoy!
 
 **Screenshot**  
-<img src="http://i.imgur.com/Bj3RnoF.png" width="600px"/>  
-
+![alt tag](client/assets/scenicninjamock.png)  
 
 ## Team
 
-  - __Product Owner__: Joel Aguero
-  - __Scrum Master__: Andrew Ho
-  - __Development Team Members__: Reina Mei, Laura Curley
+  - __Product Owner__: Muhammad Naqvi
+  - __Scrum Master__: Dylan Kuang
+  - __Development Team Members__: Bo Sanders, Chris Lardizabal
 
 ## Table of Contents
 
