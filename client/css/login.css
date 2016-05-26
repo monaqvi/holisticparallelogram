@@ -128,8 +128,12 @@ h1, p {
   font-size: .6em;
   color: rgba(255, 255, 255, 0.6);
   position: fixed;
-  bottom: 0;
+  bottom: -5px;
   margin-bottom: 20px;
   text-align: center;
   width: 100%;
+}
+
+.signature {
+  color: white;
 }
