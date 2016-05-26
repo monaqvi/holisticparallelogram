@@ -123,12 +123,11 @@ h1, p {
 }
 
 #footer {
-  position: relative;
   z-index: 2;
   font-size: .6em;
   color: rgba(255, 255, 255, 0.6);
   position: fixed;
-  bottom: -5px;
+  bottom: 0;
   margin-bottom: 20px;
   text-align: center;
   width: 100%;
