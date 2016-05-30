@@ -8,8 +8,8 @@ ScenicNinja uses your current location to find great views nearby. It utilizes t
 
 ## Team
 
-  - __Product Owner__: Muhammad Naqvi
-  - __Scrum Master__: Dylan Kuang
+  - __Product Owner__: Dylan Kuang
+  - __Scrum Master__: Muhammad Naqvi
   - __Development Team Members__: Bo Sanders, Chris Lardizabal
 
 ## Table of Contents
