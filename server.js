@@ -9,7 +9,8 @@ var session = require('express-session');
 var app = express();
 require(__dirname + '/server/db/index.js')();
 
-var port = process.env.PORT || 4568;
+const port = process.env.PORT || 5000;
+
 var router = require(__dirname + '/server/router/routes');
 
 app.use(bodyParser.json());
