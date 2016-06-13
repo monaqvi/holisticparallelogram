@@ -45,6 +45,8 @@ const renderFullPage = function(html, initialState) {
       <body>
         <div id="app"><div>${html}</div></div>
         <script>
+          window.console.error = function() {  
+          };
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
         </script>
         <script src="bundle.js"></script>
