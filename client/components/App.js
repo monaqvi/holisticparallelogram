@@ -6,7 +6,6 @@ import Tab from 'material-ui/lib/tabs/tab';
 import Header from './Header';
 import PlaceContainer from './PlaceContainer';
 import SavedPlaceContainer from './SavedPlaceContainer';
-import searchGooglePlaces from '../utils/searchGooglePlaces.js';
 import touchTap from 'react-tap-event-plugin';
 import $ from 'jquery';
 import Navbar from './Navbar';
