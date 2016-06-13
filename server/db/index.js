@@ -6,7 +6,7 @@ module.exports = function() {
   Place.belongsToMany(User, {through: 'UserPlace'});
   User.belongsToMany(Place, {through: 'UserPlace'});
 
-  // Place.sync(); //use {force: true} option to drop existing tables
-  // User.sync();
+  Place.sync(); //use {force: true} option to drop existing tables
+  User.sync();
   db.sync(); //Using this instead of syncing place and user separately creates the joint table UserPlace in the database.
 };
