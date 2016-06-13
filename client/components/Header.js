@@ -33,11 +33,11 @@ class Header extends Component {
         </nav>
         <div className='grid'>
           <div className='col-2-12'>
-            <img className='ninja' src='./../assets/ninja.svg' />
+            <img className='ninja' src='./../assets/samurai_lg.png' />
           </div>
           <div className='col-10-12'>
             <h1>SCENIC<span className='black'>.SAMURAI</span></h1>
-            <p className='description'>After years spent scouring Google Places, Scenic Ninja is ready to share his wisdom with you.</p>
+            <p className='description'>After years spent scouring Google Places, Scenic Samurai is ready to share his wisdom with you.</p>
             <button
             onClick={ this.handleClick.bind(this) }
             type="submit">Find Views

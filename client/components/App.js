@@ -39,12 +39,12 @@ class App extends Component {
           value={this.state.value}
           style={tabStyle}
         >
-            <Tab label='View Search' value='a' onClick={this.handleChange.bind(this, 'a')} ref='TEST'>
+            <Tab label='View Search' value='a' onClick={this.handleChange.bind(this, 'a')}>
             <div className='grid'>
               <PlaceContainer/>
             </div>
             </Tab>
-            <Tab label='Your Places' value='b' onClick={this.handleChange.bind(this, 'b')} ref='TEST'>
+            <Tab label='Your Places' value='b' onClick={this.handleChange.bind(this, 'b')}>
             <SavedPlaceContainer/>
             </Tab>
         </Tabs>
