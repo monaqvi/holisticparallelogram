@@ -40,7 +40,7 @@ header .black, .black {
   max-width: 220px;
 }
 
-.navNinja {
+.navSamurai {
   height: 30px;
   padding-left: 15px;
 }
@@ -61,7 +61,7 @@ header .black, .black {
   padding: 7px 30px;
 }
 
-header .ninja {
+header .samurai {
   max-height: 150px;
   opacity: .8;
 }
@@ -78,7 +78,7 @@ a:active {color: inherit;}
 
 a.place-entry-link, a.saved-place-entry-link {
   padding: 8px 0px;
-  color: #FAFAFA;
+  color: #E55136;
 }
 
 a.place-entry-link {

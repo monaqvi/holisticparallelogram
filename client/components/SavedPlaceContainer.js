@@ -82,7 +82,7 @@ class SavedPlaceContainer extends Component {
               language: 'en'
           }}
           center={[37.783697, -122.408966]}
-          zoom={12}
+          zoom={10}
           >
           {this.props.savedPlaces.map((savedPlace ) =>(
             <TestMarker lat={savedPlace.lat} lng={savedPlace.lng} text={'A'}></TestMarker>
