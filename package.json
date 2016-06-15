@@ -12,7 +12,7 @@
     "Chris Lardizabal",
     "Dylan Kuang"
   ],
-  "main": "server.js",
+  "main": "precompile.js",
   "scripts": {
     "test": "mocha --require ./test/serverTest.js",
     "start": "nodemon precompile.js",
@@ -52,6 +52,7 @@
     "passport-facebook": "^2.1.0",
     "passport-google-auth": "^1.0.1",
     "passport-google-oauth": "^1.0.0",
+    "path": "^0.12.7",
     "pug": "^2.0.0-alpha6",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",

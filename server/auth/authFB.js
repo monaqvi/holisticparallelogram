@@ -15,7 +15,7 @@ module.exports.checkAuth = function (req, res, next) {
 
 module.exports.handleLogin = passport.authenticate('facebook', {
   authType: 'rerequest',
-  scope: ['public_profile', 'email', 'user_friends', 'user_tagged_places'] 
+  scope: ['public_profile', 'email'] 
 });
 
 module.exports.authenticateLogin = passport.authenticate('facebook', {
