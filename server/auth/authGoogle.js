@@ -7,8 +7,8 @@ if (process.env.NODE_ENV === 'dev') {
       clientID = googleKeys.clientID,
       clientSecret = googleKeys.clientSecret;
 } else {
-  var clientID = process.env.FB_CLIENT_ID,
-      clientSecret = process.env.FB_CLIENT_SECRET;
+  var clientID = process.env.GOOGLE_CLIENT_ID,
+      clientSecret = process.env.GOOGLE_CLIENT_SECRET;
 }
 
 // Middleware for checking whether the user is logged in
