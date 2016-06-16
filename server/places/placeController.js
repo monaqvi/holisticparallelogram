@@ -8,8 +8,8 @@ var urlParser = require('url');
 if (process.env.NODE_ENV === 'dev') {
   var GOOGLE_PLACES_API_KEY = require(__dirname + '/../config/googleplaces.js');
 } else {
-  var GOOGLE_PLACES_API_KEY = process.env.GOOGLE_PLACES_API_KEY,
-};
+  var GOOGLE_PLACES_API_KEY = process.env.GOOGLE_PLACES_API_KEY;
+}
 
 module.exports.getAllSaved = function(req, res) {
   var user = req.body.user;
