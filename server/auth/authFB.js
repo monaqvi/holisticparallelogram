@@ -1,7 +1,15 @@
-var facebookKeys = require(__dirname + '/../config/facebook');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook');
 var User = require(__dirname + '/../users/userModel');
+
+if (process.env.NODE_ENV === 'dev') {
+  var facebookKeys = require(__dirname + '/../config/facebook'),
+      clientID = facebookKeys.clientID,
+      clientSecret = facebookKeys.clientSecret;
+} else {
+  var clientID = process.env.FB_CLIENT_ID,
+      clientSecret = process.env.FB_CLIENT_SECRET;
+}
 
 // Middleware for checking whether the user is logged in
 module.exports.checkAuth = function (req, res, next) {
@@ -40,8 +48,8 @@ passport.deserializeUser(function(user, done) {
 });
 
 passport.use(new FacebookStrategy.Strategy({
-  clientID: facebookKeys.clientID,
-  clientSecret: facebookKeys.clientSecret,
+  clientID: clientID,
+  clientSecret: clientSecret,
   callbackURL: '/auth/facebook/callback',
   profileFields: ['id', 'displayName', 'link', 'email', 'first_name', 'last_name', 'picture'],
 }, 
