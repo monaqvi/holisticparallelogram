@@ -15,8 +15,8 @@
   "main": "precompile.js",
   "scripts": {
     "test": "mocha --require ./test/serverTest.js",
-    "start": "webpack nodemon precompile.js",
-    "dev": "webpack -d --watch && NODE_ENV=dev nodemon --debug precompile.js",
+    "start": "webpack node precompile.js",
+    "dev": "webpack -d && NODE_ENV=dev nodemon --debug precompile.js",
     "babel-node": "babel-node --presets=es2015"
   },
   "repository": {

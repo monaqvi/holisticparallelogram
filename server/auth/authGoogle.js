@@ -3,6 +3,7 @@ var GoogleStrategy = require('passport-google-oauth');
 var User = require(__dirname + '/../users/userModel');
 
 if (process.env.NODE_ENV === 'dev') {
+  console.log('dev');
   var googleKeys = require(__dirname + '/../config/googleplus'),
       clientID = googleKeys.clientID,
       clientSecret = googleKeys.clientSecret;
