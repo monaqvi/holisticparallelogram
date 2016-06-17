@@ -8,6 +8,15 @@ var renderIndex = require(__dirname + '/indexHandler');
 
 module.exports = function(app, express) {
   app.use(express.static(__dirname + '/../../client'));
+
+  app.get('*', function(req, res, next) {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+      res.redirect('https://scenicsamurai.herokuapp.com' + req.url);
+    } else {
+      next(); /* Continue to other routes if we're not redirecting */
+    }
+  });
+
   app.get('/home/*', renderIndex);
 
   app.get('/api/places', placeController.searchGoogle);
