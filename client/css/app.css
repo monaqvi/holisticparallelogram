@@ -26,7 +26,9 @@ header .description {
 header .black, .black {
   color: rgba(0,0,0,0.8);
 }
-
+.contrast {
+  color: #005EBD;
+}
 .saved-places {
   color: rgba(0,0,0,0.6);
 }
