@@ -9,6 +9,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Signika', sans-serif;
 }
 
+h1 {
+  line-height: 5px;
+}
 
 header {
   background-color: #005EBD;
@@ -188,6 +191,10 @@ button:focus {
   margin-top: 8px;
 }
 
+.place-pic img {
+  width: 100%;
+}
+
 .place-entry-favorite {
   width: 25%;
   display: flex;
@@ -252,4 +259,10 @@ button:focus {
   max-width:100%;
   max-height:100%;
   background-size: 70px 70px;
+}
+
+@media only screen and (max-width: 400px) {
+  body {
+    font-color:red;
+  }
 }
