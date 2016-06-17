@@ -36,10 +36,10 @@ const renderFullPage = function(html, initialState) {
         <meta property="og:description" content="Scenic.Samurai uses the Google Places API and your current location to find beautiful places around you." />
         <meta property="og:site_name" content="Scenic.Samurai" />
 
-        <link rel="stylesheet" href="./css/app.css" media="screen" title="no title" charset="utf-8" />
-        <link rel="stylesheet" href="./css/simple-line-icons.css" media="screen" title="no title" charset="utf-8" />
-        <link rel="stylesheet" href="./css/simple-grid.css" media="screen" title="no title" charset="utf-8" />
-        <link rel="stylesheet" href="./css/animate.css" media="screen" title="no title" charset="utf-8" />
+        <link rel="stylesheet" href="/css/app.css" media="screen" title="no title" charset="utf-8" />
+        <link rel="stylesheet" href="/css/simple-line-icons.css" media="screen" title="no title" charset="utf-8" />
+        <link rel="stylesheet" href="/css/simple-grid.css" media="screen" title="no title" charset="utf-8" />
+        <link rel="stylesheet" href="/css/animate.css" media="screen" title="no title" charset="utf-8" />
         <link href="https://fonts.googleapis.com/css?family=Signika:700,400,600" rel="stylesheet" type="text/css" />
       </head>
       <body>
@@ -49,7 +49,7 @@ const renderFullPage = function(html, initialState) {
           };
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
         </script>
-        <script src="bundle.js"></script>
+        <script src="/bundle.js"></script>
       </body>
     </html>
     `;
